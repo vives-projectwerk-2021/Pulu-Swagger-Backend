@@ -76,7 +76,7 @@ paths:
         200:
           description: successful operation
           schema:
-            $ref: '#/definitions/Sensor'
+            $ref: '#/definitions/SensorValue'
         400:
           description: Invalid ID supplied
         404:
@@ -180,7 +180,66 @@ definitions:
       devicename:
         type: string
       location:
+        type: object
+        properties:
+          lat:
+            type: number
+          long:
+            type: number
+  SensorValue:
+    type: object
+    required:
+    - _id
+    - firstname
+    - lastname
+    - deviceid
+    - devicename
+    - location
+    properties:
+      _id:
         type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      deviceid:
+        type: string
+      devicename:
+        type: string
+      location:
+        type: object
+        properties:
+          lat:
+            type: number
+          long:
+            type: number
+      values:
+        type: array
+        items:
+          type: object
+          properties:
+            battery:
+              type: number
+            light:
+              type: number
+            moisture:
+              type: object
+              properties:
+                level1:
+                  type: number
+                level2:
+                  type: number
+                level3:
+                  type: number
+                level4:
+                  type: number
+            temperature:
+              type: object
+              properties:
+                air:
+                  type: number
+                ground:
+                  type: number
   ApiResponse:
     type: object
     properties:
@@ -204,7 +263,12 @@ definitions:
       devicename:
         type: string
       location:
-        type: string
+        type: object
+        properties:
+          lat:
+            type: number
+          long:
+            type: number
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
