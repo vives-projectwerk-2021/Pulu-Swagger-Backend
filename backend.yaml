@@ -1,0 +1,202 @@
+swagger: '2.0'
+info:
+  description: |
+    This is the backend for the pulu project.
+    [http://swagger.io](http://swagger.io) or on 
+    [irc.freenode.net, #swagger](http://swagger.io/irc/).
+  version: 1.0.0
+  title: Pulu Backend
+  
+tags:
+- name: device
+  description: Everything about your Devices
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+
+paths:
+  /devices:
+    get:
+      tags:
+        - device
+      summary: List all devices
+      responses:
+        200:
+          description: succesful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Device'
+    post:
+      tags:
+        - device
+      summary: Create new Device
+      parameters:
+        - in: body
+          name: body
+          description: Device object that needs to be added to the database
+          required: true
+          schema:
+            $ref: '#/definitions/DeviceBody'
+      responses:
+        201:
+          description: succesful operation
+          schema:
+            $ref: '#/definitions/Device'
+          
+  /devices/{deviceId}:
+    get:
+      tags:
+        - device
+      summary: Find a device by ID
+      operationId: getDeviceById
+      produces:
+        - application/json
+      parameters:
+        - in: path 
+          name: deviceId
+          description: ID of device to return
+          required: true
+          type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Device'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Device not found
+    put:
+      tags:
+      - device
+      summary: Update an existing device
+      operationId: updateDevice
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: deviceId
+          description: ID of device to return
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Device object that needs to be added to the store
+          required: true
+          schema:
+            $ref: '#/definitions/DeviceBody'
+      responses:
+        204:
+          description: Succesful operation
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Device not found
+        405:
+          description: Validation exception
+    delete:
+      tags:
+      - device
+      summary: Deletes a device
+      operationId: deletePet
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+        - name: deviceId
+          in: path
+          description: ID of device to return
+          required: true
+          type: string
+      responses:
+        204:
+          description: Succesful operation
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Device not found
+          
+securityDefinitions:
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: http://petstore.swagger.io/oauth/dialog
+    flow: implicit
+    scopes:
+      write:pets: modify pets in your account
+      read:pets: read your pets
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+definitions:
+  User:
+    type: object
+    required:
+      - _id
+      - username
+      - password
+    properties:
+      _id:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+  Device:
+    type: object
+    required:
+    - _id
+    - firstname
+    - lastname
+    - deviceid
+    - devicename
+    - location
+    properties:
+      _id:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+      deviceid:
+        type: string
+      devicename:
+        type: string
+      location:
+        type: string
+  ApiResponse:
+    type: object
+    properties:
+      message:
+        type: string
+  DeviceBody:
+    type: object
+    required:
+    - firstname
+    - lastname
+    - deviceid
+    - devicename
+    - location
+    properties:
+      firstname:
+        type: string
+      lastname:
+        type: string
+      deviceid:
+        type: string
+      devicename:
+        type: string
+      location:
+        type: string
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /p9138/Pulu-Backend/1.0.0
+schemes:
+ - https
+ - http
