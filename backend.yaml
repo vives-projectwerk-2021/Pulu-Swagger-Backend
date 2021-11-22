@@ -58,6 +58,20 @@ paths:
           description: ID of device to return
           required: true
           type: string
+        - name: time
+          in: query
+          description: specify time until first to last value
+          type: array
+          items:
+            type: string
+            enum:
+            - last
+            - hour
+            - day
+            - week
+            - year
+            - all
+            default: last
       responses:
         200:
           description: successful operation
