@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: |
-    This is the backend for the pulu project te vinden op [GitHub](https://github.com/vives-projectwerk-2021/pulu-backend).
+    This is the backend for the pulu project, you can find it on [GitHub](https://github.com/vives-projectwerk-2021/pulu-backend).
     [http://swagger.io](http://swagger.io) or on 
     [irc.freenode.net, #swagger](http://swagger.io/irc/).
   version: 1.0.0
