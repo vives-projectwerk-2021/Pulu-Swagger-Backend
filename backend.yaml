@@ -171,17 +171,11 @@ definitions:
     type: object
     required:
       - _id
-      - firstname
-      - lastname
       - deviceid
       - devicename
       - location
     properties:
       _id:
-        type: string
-      firstname:
-        type: string
-      lastname:
         type: string
       deviceid:
         type: string
@@ -204,10 +198,6 @@ definitions:
         type: object
         properties:
           _id:
-            type: string
-          firstname:
-            type: string
-          lastname:
             type: string
           deviceid:
             type: string
@@ -256,16 +246,10 @@ definitions:
   SensorBody:
     type: object
     required:
-      - firstname
-      - lastname
       - deviceid
       - devicename
       - location
     properties:
-      firstname:
-        type: string
-      lastname:
-        type: string
       deviceid:
         type: string
       devicename:
