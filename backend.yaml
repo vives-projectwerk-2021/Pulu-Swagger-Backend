@@ -174,6 +174,7 @@ definitions:
       - deviceid
       - devicename
       - location
+      - lastseen
     properties:
       _id:
         type: string
@@ -181,6 +182,9 @@ definitions:
         type: string
       devicename:
         type: string
+      lastseen:
+        type: string
+        format: date-time
       location:
         type: object
         properties:
@@ -203,6 +207,9 @@ definitions:
             type: string
           devicename:
             type: string
+          lastseen:
+            type: string
+            format: date-time
           location:
             type: object
             properties:
