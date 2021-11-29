@@ -194,6 +194,7 @@ definitions:
             type: number
           long:
             type: number
+            
   SensorValue:
     type: object
     required:
@@ -204,50 +205,54 @@ definitions:
       - devicename
       - location
     properties:
-      _id:
-        type: string
-      firstname:
-        type: string
-      lastname:
-        type: string
-      deviceid:
-        type: string
-      devicename:
-        type: string
-      location:
+      info:
         type: object
         properties:
-          lat:
-            type: number
-          long:
-            type: number
-      values:
+          _id:
+            type: string
+          firstname:
+            type: string
+          lastname:
+            type: string
+          deviceid:
+            type: string
+          devicename:
+            type: string
+          location:
+            type: object
+            properties:
+              lat:
+                type: number
+              long:
+                type: number
+      value:
         type: array
         items:
           type: object
           properties:
-            battery:
+            result:
+              type: string
+            table:
               type: number
-            light:
+            _start:
+              type: string
+              format: date-time
+            _stop:
+              type: string
+              format: date-time
+            _time:
+              type: string
+              format: date-time
+            _value:
               type: number
+            _field:
+              type: string
+            _measurement:
+              type: string
+            host:
+              type: string
             moisture:
-              type: object
-              properties:
-                level1:
-                  type: number
-                level2:
-                  type: number
-                level3:
-                  type: number
-                level4:
-                  type: number
-            temperature:
-              type: object
-              properties:
-                air:
-                  type: number
-                ground:
-                  type: number
+              type: string
   ApiResponse:
     type: object
     properties:
