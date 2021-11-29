@@ -10,3 +10,5 @@ Deze kun je vinden op https://editor.swagger.io/. Op de swagger editor doe je **
 ```
 https://raw.githubusercontent.com/vives-projectwerk-2021/Pulu-Swagger-Backend/main/backend.yaml
 ```
+
+Wel opgelet als je werkt via de URL word soms niet de nieuwste versie gebruikt. Als dat het geval is download dan gewoon de file en doe **File > Import file**.
