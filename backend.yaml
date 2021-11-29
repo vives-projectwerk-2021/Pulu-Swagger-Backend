@@ -198,12 +198,7 @@ definitions:
   SensorValue:
     type: object
     required:
-      - _id
-      - firstname
-      - lastname
-      - deviceid
-      - devicename
-      - location
+      - info
     properties:
       info:
         type: object
