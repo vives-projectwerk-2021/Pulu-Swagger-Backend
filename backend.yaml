@@ -55,19 +55,16 @@ paths:
           description: ID of device to return
           required: true
           type: string
-          
         - name: start
           in: query
-          description: "start time - Example: 2018-03-20T09:12:28Z"
+          description: 'start time - Example: 2018-03-20T09:12:28Z'
           type: string
           format: date-time
-        
         - name: stop
           in: query
-          description: "stop time - Example: 2018-03-20T09:12:28Z"
+          description: 'stop time - Example: 2018-03-20T09:12:28Z'
           type: string
           format: date-time
-          
         - name: step
           in: query
           description: specify time until first to last value
@@ -192,7 +189,6 @@ definitions:
             type: number
           long:
             type: number
-            
   SensorValue:
     type: object
     required:
@@ -248,8 +244,15 @@ definitions:
   ApiResponse:
     type: object
     properties:
+      status:
+        type: number
+      error:
+        type: string
       message:
         type: string
+      timestamp:
+        type: string
+        format: date-time
   SensorBody:
     type: object
     required:
