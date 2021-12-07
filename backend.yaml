@@ -2,8 +2,6 @@ swagger: '2.0'
 info:
   description: |
     This is the backend for the pulu project, you can find it on [GitHub](https://github.com/vives-projectwerk-2021/pulu-backend).
-    [http://swagger.io](http://swagger.io) or on 
-    [irc.freenode.net, #swagger](http://swagger.io/irc/).
   version: 1.0.0
   title: Pulu Backend
 tags:
@@ -35,7 +33,7 @@ paths:
           description: Sensor object that needs to be added to the database
           required: true
           schema:
-            $ref: '#/definitions/SensorPostBody'
+            $ref: '#/definitions/SensorBody'
       responses:
         '201':
           description: succesful operation
@@ -107,7 +105,7 @@ paths:
           description: Sensor object that update the existing sensor
           required: true
           schema:
-            $ref: '#/definitions/SensorPutBody'
+            $ref: '#/definitions/SensorBody'
       responses:
         '204':
           description: Succesful operation
@@ -240,37 +238,23 @@ definitions:
               type: string
             moisture:
               type: string
-  ApiResponse:
+  ErrorResponse:
     type: object
+    required:
+      - status
+      - message
+      - timestamp
     properties:
       status:
         type: number
-      error:
-        type: string
       message:
         type: string
       timestamp:
         type: string
         format: date-time
-  SensorPostBody:
-    type: object
-    required:
-      - id
-      - name
-      - location
-    properties:
-      id:
+      details:
         type: string
-      name:
-        type: string
-      location:
-        type: object
-        properties:
-          lat:
-            type: number
-          long:
-            type: number
-  SensorPutBody:
+  SensorBody:
     type: object
     required:
       - name
