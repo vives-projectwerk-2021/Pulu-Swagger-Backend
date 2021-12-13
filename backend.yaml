@@ -33,7 +33,7 @@ paths:
           description: Sensor object that needs to be added to the database
           required: true
           schema:
-            $ref: '#/definitions/SensorBody'
+            $ref: '#/definitions/Sensor'
       responses:
         '201':
           description: succesful operation
@@ -165,20 +165,20 @@ definitions:
   Sensor:
     type: object
     required:
-      - id
+      - deviceid
       - devicename
       - location
-      - lastseen
     properties:
-      id:
+      deviceid:
         type: string
-      name:
+      devicename:
         type: string
-      lastseen:
-        type: string
-        format: date-time
       location:
         type: object
+        required:
+          - lat
+          - long
+          - place_name
         properties:
           lat:
             type: number
@@ -257,13 +257,17 @@ definitions:
   SensorBody:
     type: object
     required:
-      - name
+      - devicename
       - location
     properties:
-      name:
+      devicename:
         type: string
       location:
         type: object
+        required:
+          - lat
+          - long
+          - place_name
         properties:
           lat:
             type: number
