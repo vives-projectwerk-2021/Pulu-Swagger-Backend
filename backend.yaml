@@ -298,52 +298,46 @@ definitions:
     required:
       - info
     properties:
-      info:
+      id:
+        type: string
+      name:
+        type: string
+      location:
         type: object
         properties:
-          id:
+          lat:
+            type: number
+          long:
+            type: number
+          place_name:
             type: string
-          name:
-            type: string
-          lastseen:
-            type: string
-            format: date-time
-          location:
-            type: object
-            properties:
-              lat:
-                type: number
-              long:
-                type: number
-              place_name:
-                type: string
-      value:
+      values:
         type: array
         items:
           type: object
           properties:
-            result:
-              type: string
-            table:
-              type: number
-            _start:
+            time:
               type: string
               format: date-time
-            _stop:
-              type: string
-              format: date-time
-            _time:
-              type: string
-              format: date-time
-            _value:
-              type: number
-            _field:
-              type: string
-            _measurement:
-              type: string
-            host:
-              type: string
             moisture:
+              type: array
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  height:
+                    type: string
+            temperature:
+              type: object
+              properties:
+                air:
+                  type: string
+                ground:
+                  type: string
+            light:
+              type: string
+            battery_voltage:
               type: string
   ErrorResponse:
     type: object
