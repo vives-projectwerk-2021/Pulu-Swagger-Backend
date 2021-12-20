@@ -7,9 +7,10 @@ info:
 tags:
   - name: sensors
     description: Everything about sensors
-    externalDocs:
-      description: Find out more
-      url: http://swagger.io
+  - name: livedata
+    description: Getting live data from sensors
+  - name: metrics
+    description: Devops metrics
 paths:
   /sensors:
     get:
@@ -136,6 +137,17 @@ paths:
           description: Invalid ID supplied
         '404':
           description: Sensor not found
+  /livedata:
+    get:
+      tags:
+        - livedata
+    post:
+      tags:
+        - livedata
+  /metrics:
+    get:
+      tags:
+        - metrics
 securityDefinitions:
   petstore_auth:
     type: oauth2
@@ -186,6 +198,97 @@ definitions:
             type: number
           place_name:
             type: string
+  livedata:
+    type: object
+    properties:
+      message:
+        type: string
+      data:
+        type: object
+        properties:
+          device_id:
+            type: string
+          time:
+            type: string
+          count:
+            type: number
+          sensors:
+            type: object
+            properties:
+              voltage:
+                type: object
+                properties:
+                  battery:
+                    type: object
+                    properties:
+                      status:
+                        type: number
+                      value:
+                        type: number
+              light:
+                type: object
+                properties:
+                  status:
+                    type: number
+                  value:
+                    type: number
+              moisture:
+                type: object
+                properties:
+                  level1:
+                    type: object
+                    properties:
+                      status:
+                        type: number
+                      value:
+                        type: number
+                  level2:
+                    type: object
+                    properties:
+                      status:
+                        type: number
+                      value:
+                        type: number
+                  level3:
+                    type: object
+                    properties:
+                      status:
+                        type: number
+                      value:
+                        type: number
+                  level4:
+                    type: object
+                    properties:
+                      status:
+                        type: number
+                      value:
+                        type: number
+              temperature:
+                type: object
+                properties:
+                  air:
+                    type: object
+                    properties:
+                      status:
+                        type: number
+                      value:
+                        type: number
+                  ground:
+                    type: object
+                    properties:
+                      status:
+                        type: number
+                      value:
+                        type: number
+          meta:
+            type: object
+            properties:
+              gateway_cnt:
+                type: number
+              strongest_rssi:
+                type: number
+              strongest_gateway:
+                type: string
   SensorValue:
     type: object
     required:
